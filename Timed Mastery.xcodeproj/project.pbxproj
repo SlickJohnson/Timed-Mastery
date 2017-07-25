@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E6D30D5FFDD4FBE67B65950 /* Pods_Timed_MasteryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F65765FC483D56CAF9D38D /* Pods_Timed_MasteryTests.framework */; };
+		3D30A17D1F265CA0008AC397 /* RequiredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D30A17C1F265CA0008AC397 /* RequiredTextField.swift */; };
+		3D30A17F1F265FCC008AC397 /* MovableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D30A17E1F265FCC008AC397 /* MovableButton.swift */; };
 		3DA18B751F2252010059A1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18B741F2252010059A1D8 /* AppDelegate.swift */; };
-		3DA18B771F2252010059A1D8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18B761F2252010059A1D8 /* FirstViewController.swift */; };
 		3DA18B791F2252010059A1D8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18B781F2252010059A1D8 /* SecondViewController.swift */; };
 		3DA18B7C1F2252010059A1D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA18B7A1F2252010059A1D8 /* Main.storyboard */; };
 		3DA18B7E1F2252010059A1D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA18B7D1F2252010059A1D8 /* Assets.xcassets */; };
 		3DA18B811F2252010059A1D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA18B7F1F2252010059A1D8 /* LaunchScreen.storyboard */; };
 		3DA18B8C1F2252010059A1D8 /* Timed_MasteryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18B8B1F2252010059A1D8 /* Timed_MasteryTests.swift */; };
 		3DA18B971F2252010059A1D8 /* Timed_MasteryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18B961F2252010059A1D8 /* Timed_MasteryUITests.swift */; };
+		3DA18BA51F228AE00059A1D8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BA41F228AE00059A1D8 /* DashboardViewController.swift */; };
+		3DA18BA71F228B3E0059A1D8 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BA61F228B3E0059A1D8 /* Task.swift */; };
+		3DA18BA91F2291BC0059A1D8 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BA81F2291BC0059A1D8 /* TimerViewController.swift */; };
+		3DA18BAC1F2294DB0059A1D8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BAA1F2294DB0059A1D8 /* HistoryViewController.swift */; };
+		3DA18BAD1F2294DB0059A1D8 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BAB1F2294DB0059A1D8 /* DataBaseViewController.swift */; };
+		3DA18BB01F2295320059A1D8 /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BAE1F2295320059A1D8 /* DefaultCell.swift */; };
+		3DA18BB11F2295320059A1D8 /* ExpansionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA18BAF1F2295320059A1D8 /* ExpansionCell.swift */; };
+		5FB478AE14A8CEB4922D754F /* Pods_Timed_MasteryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E708E4C3B1D7DA7DC2C38886 /* Pods_Timed_MasteryUITests.framework */; };
+		7D2EA2FEA1C64DDF673E605D /* Pods_Timed_Mastery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C540F8A2219C1FE8D2D1E475 /* Pods_Timed_Mastery.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D30A17C1F265CA0008AC397 /* RequiredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredTextField.swift; sourceTree = "<group>"; };
+		3D30A17E1F265FCC008AC397 /* MovableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovableButton.swift; sourceTree = "<group>"; };
 		3DA18B711F2252010059A1D8 /* Timed Mastery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timed Mastery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA18B741F2252010059A1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DA18B761F2252010059A1D8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		3DA18B781F2252010059A1D8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DA18B7B1F2252010059A1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DA18B7D1F2252010059A1D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +61,22 @@
 		3DA18B921F2252010059A1D8 /* Timed MasteryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Timed MasteryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA18B961F2252010059A1D8 /* Timed_MasteryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timed_MasteryUITests.swift; sourceTree = "<group>"; };
 		3DA18B981F2252010059A1D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DA18BA41F228AE00059A1D8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		3DA18BA61F228B3E0059A1D8 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		3DA18BA81F2291BC0059A1D8 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		3DA18BAA1F2294DB0059A1D8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		3DA18BAB1F2294DB0059A1D8 /* DataBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
+		3DA18BAE1F2295320059A1D8 /* DefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
+		3DA18BAF1F2295320059A1D8 /* ExpansionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionCell.swift; sourceTree = "<group>"; };
+		43F12252044E444E87221EE5 /* Pods-Timed MasteryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed MasteryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Timed MasteryUITests/Pods-Timed MasteryUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		48D326B9AFEA2FC2B5D8371E /* Pods-Timed Mastery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed Mastery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Timed Mastery/Pods-Timed Mastery.debug.xcconfig"; sourceTree = "<group>"; };
+		674DEDBF9A9CC2E1C8869341 /* Pods-Timed Mastery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed Mastery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timed Mastery/Pods-Timed Mastery.release.xcconfig"; sourceTree = "<group>"; };
+		72F65765FC483D56CAF9D38D /* Pods_Timed_MasteryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timed_MasteryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BB7988FB370FE140B2FDF50 /* Pods-Timed MasteryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed MasteryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timed MasteryTests/Pods-Timed MasteryTests.release.xcconfig"; sourceTree = "<group>"; };
+		B6ADDFEAFC660494073CC0E8 /* Pods-Timed MasteryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed MasteryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Timed MasteryTests/Pods-Timed MasteryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C540F8A2219C1FE8D2D1E475 /* Pods_Timed_Mastery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timed_Mastery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7BBB23B8250B9418DDA6973 /* Pods-Timed MasteryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timed MasteryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timed MasteryUITests/Pods-Timed MasteryUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E708E4C3B1D7DA7DC2C38886 /* Pods_Timed_MasteryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timed_MasteryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2EA2FEA1C64DDF673E605D /* Pods_Timed_Mastery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6D30D5FFDD4FBE67B65950 /* Pods_Timed_MasteryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +100,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB478AE14A8CEB4922D754F /* Pods_Timed_MasteryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B9FFC85701B2173864B663 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48D326B9AFEA2FC2B5D8371E /* Pods-Timed Mastery.debug.xcconfig */,
+				674DEDBF9A9CC2E1C8869341 /* Pods-Timed Mastery.release.xcconfig */,
+				B6ADDFEAFC660494073CC0E8 /* Pods-Timed MasteryTests.debug.xcconfig */,
+				9BB7988FB370FE140B2FDF50 /* Pods-Timed MasteryTests.release.xcconfig */,
+				43F12252044E444E87221EE5 /* Pods-Timed MasteryUITests.debug.xcconfig */,
+				D7BBB23B8250B9418DDA6973 /* Pods-Timed MasteryUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3DA18B681F2252010059A1D8 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +127,8 @@
 				3DA18B8A1F2252010059A1D8 /* Timed MasteryTests */,
 				3DA18B951F2252010059A1D8 /* Timed MasteryUITests */,
 				3DA18B721F2252010059A1D8 /* Products */,
+				07B9FFC85701B2173864B663 /* Pods */,
+				68067E7D7BC243B9A5A3AE25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +146,17 @@
 			isa = PBXGroup;
 			children = (
 				3DA18B741F2252010059A1D8 /* AppDelegate.swift */,
-				3DA18B761F2252010059A1D8 /* FirstViewController.swift */,
 				3DA18B781F2252010059A1D8 /* SecondViewController.swift */,
 				3DA18B7A1F2252010059A1D8 /* Main.storyboard */,
+				3D30A17C1F265CA0008AC397 /* RequiredTextField.swift */,
+				3D30A17E1F265FCC008AC397 /* MovableButton.swift */,
+				3DA18BA41F228AE00059A1D8 /* DashboardViewController.swift */,
+				3DA18BA81F2291BC0059A1D8 /* TimerViewController.swift */,
+				3DA18BAA1F2294DB0059A1D8 /* HistoryViewController.swift */,
+				3DA18BAB1F2294DB0059A1D8 /* DataBaseViewController.swift */,
+				3DA18BA61F228B3E0059A1D8 /* Task.swift */,
+				3DA18BAE1F2295320059A1D8 /* DefaultCell.swift */,
+				3DA18BAF1F2295320059A1D8 /* ExpansionCell.swift */,
 				3DA18B7D1F2252010059A1D8 /* Assets.xcassets */,
 				3DA18B7F1F2252010059A1D8 /* LaunchScreen.storyboard */,
 				3DA18B821F2252010059A1D8 /* Info.plist */,
@@ -128,6 +182,16 @@
 			path = "Timed MasteryUITests";
 			sourceTree = "<group>";
 		};
+		68067E7D7BC243B9A5A3AE25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C540F8A2219C1FE8D2D1E475 /* Pods_Timed_Mastery.framework */,
+				72F65765FC483D56CAF9D38D /* Pods_Timed_MasteryTests.framework */,
+				E708E4C3B1D7DA7DC2C38886 /* Pods_Timed_MasteryUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DA18B9B1F2252010059A1D8 /* Build configuration list for PBXNativeTarget "Timed Mastery" */;
 			buildPhases = (
+				827C32AAF0E194BBB354AB13 /* [CP] Check Pods Manifest.lock */,
 				3DA18B6D1F2252010059A1D8 /* Sources */,
 				3DA18B6E1F2252010059A1D8 /* Frameworks */,
 				3DA18B6F1F2252010059A1D8 /* Resources */,
+				C507D753F95D9E03D69627A9 /* [CP] Embed Pods Frameworks */,
+				9AE5DC9D115A5EDA8B7C0212 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DA18B9E1F2252010059A1D8 /* Build configuration list for PBXNativeTarget "Timed MasteryTests" */;
 			buildPhases = (
+				2D1116553D7187B4A7E2B0B1 /* [CP] Check Pods Manifest.lock */,
 				3DA18B831F2252010059A1D8 /* Sources */,
 				3DA18B841F2252010059A1D8 /* Frameworks */,
 				3DA18B851F2252010059A1D8 /* Resources */,
+				754F729B71E84FEFA4A20C98 /* [CP] Embed Pods Frameworks */,
+				7F0C296507ED6052A5BEE16B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +240,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DA18BA11F2252010059A1D8 /* Build configuration list for PBXNativeTarget "Timed MasteryUITests" */;
 			buildPhases = (
+				550C2742562991041633C77F /* [CP] Check Pods Manifest.lock */,
 				3DA18B8E1F2252010059A1D8 /* Sources */,
 				3DA18B8F1F2252010059A1D8 /* Frameworks */,
 				3DA18B901F2252010059A1D8 /* Resources */,
+				828723A4CC1722EE8E126B23 /* [CP] Embed Pods Frameworks */,
+				75978D94FDC5FDD4B232E0E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,14 +333,160 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2D1116553D7187B4A7E2B0B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		550C2742562991041633C77F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		754F729B71E84FEFA4A20C98 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed MasteryTests/Pods-Timed MasteryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75978D94FDC5FDD4B232E0E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed MasteryUITests/Pods-Timed MasteryUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F0C296507ED6052A5BEE16B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed MasteryTests/Pods-Timed MasteryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		827C32AAF0E194BBB354AB13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		828723A4CC1722EE8E126B23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed MasteryUITests/Pods-Timed MasteryUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AE5DC9D115A5EDA8B7C0212 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed Mastery/Pods-Timed Mastery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C507D753F95D9E03D69627A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Timed Mastery/Pods-Timed Mastery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3DA18B6D1F2252010059A1D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D30A17F1F265FCC008AC397 /* MovableButton.swift in Sources */,
+				3DA18BA71F228B3E0059A1D8 /* Task.swift in Sources */,
+				3DA18BB01F2295320059A1D8 /* DefaultCell.swift in Sources */,
+				3DA18BA91F2291BC0059A1D8 /* TimerViewController.swift in Sources */,
 				3DA18B791F2252010059A1D8 /* SecondViewController.swift in Sources */,
+				3D30A17D1F265CA0008AC397 /* RequiredTextField.swift in Sources */,
 				3DA18B751F2252010059A1D8 /* AppDelegate.swift in Sources */,
-				3DA18B771F2252010059A1D8 /* FirstViewController.swift in Sources */,
+				3DA18BB11F2295320059A1D8 /* ExpansionCell.swift in Sources */,
+				3DA18BA51F228AE00059A1D8 /* DashboardViewController.swift in Sources */,
+				3DA18BAD1F2294DB0059A1D8 /* DataBaseViewController.swift in Sources */,
+				3DA18BAC1F2294DB0059A1D8 /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +636,7 @@
 		};
 		3DA18B9C1F2252010059A1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48D326B9AFEA2FC2B5D8371E /* Pods-Timed Mastery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
@@ -430,6 +650,7 @@
 		};
 		3DA18B9D1F2252010059A1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 674DEDBF9A9CC2E1C8869341 /* Pods-Timed Mastery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
@@ -443,6 +664,7 @@
 		};
 		3DA18B9F1F2252010059A1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6ADDFEAFC660494073CC0E8 /* Pods-Timed MasteryTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +680,7 @@
 		};
 		3DA18BA01F2252010059A1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB7988FB370FE140B2FDF50 /* Pods-Timed MasteryTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +696,7 @@
 		};
 		3DA18BA21F2252010059A1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43F12252044E444E87221EE5 /* Pods-Timed MasteryUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
@@ -487,6 +711,7 @@
 		};
 		3DA18BA31F2252010059A1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7BBB23B8250B9418DDA6973 /* Pods-Timed MasteryUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = RFQY6T2L4D;
@@ -518,6 +743,7 @@
 				3DA18B9D1F2252010059A1D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DA18B9E1F2252010059A1D8 /* Build configuration list for PBXNativeTarget "Timed MasteryTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +752,7 @@
 				3DA18BA01F2252010059A1D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DA18BA11F2252010059A1D8 /* Build configuration list for PBXNativeTarget "Timed MasteryUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +761,7 @@
 				3DA18BA31F2252010059A1D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

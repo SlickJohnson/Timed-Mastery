@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Timed Mastery
-//
-//  Created by Willie Johnson on 7/21/17.
-//  Copyright © 2017 Willie Johnson. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

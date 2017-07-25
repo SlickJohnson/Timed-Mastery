@@ -1,0 +1,6 @@
+framework module Pods_Timed_Mastery {
+  umbrella header "Pods-Timed Mastery-umbrella.h"
+
+  export *
+  module * { export * }
+}
