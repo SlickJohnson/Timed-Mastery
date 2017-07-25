@@ -27,13 +27,13 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         secondsLabel.text = "\(String(format: "%02d", secCounter))"
         minuteLabel.text = "\(String(format: "%02d", minCounter))"
         secondsLabel.text = "\(String(format: "%02d", hrCounter))"
-        playButton.isEnabled = true
         
         taskName.frame.size.height = 44
         
         // Change button appearance
         
         saveButton.isEnabled = false
+        stopButton.isEnabled = false
         
         // Play/Pause button
         var origImage = UIImage(named: "Circle_Play_Button_Filled-500px")
@@ -63,8 +63,8 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         saveButton.tintColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
         saveButton.backgroundColor = .clear
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         self.taskName.delegate = self
     }
@@ -79,12 +79,9 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         timer.invalidate()
         isRunning = false
         
-        playButton.isEnabled = true
-        
         self.view.endEditing(true)
         
         let refreshAlert = UIAlertController(title: "DELETE Task?", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action: UIAlertAction!) in
             self.animateButton(animation: "delete")
@@ -97,6 +94,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             self.secondsLabel.text = "\(String(format: "%02d", self.secCounter))"
             self.minuteLabel.text = "\(String(format: "%02d", self.minCounter))"
             self.hourLabel.text = "\(String(format: "%02d", self.hrCounter))"
+            self.saveButton.isEnabled = false
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
@@ -142,6 +140,8 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             timer.invalidate()
             isRunning = false
             
+            playButton.isEnabled = true
+            
             self.secCounter = 0
             self.minCounter = 0
             self.hrCounter = 0
@@ -162,33 +162,30 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             
         case "play":
             // Play -> Pause
-            UIView.transition(with: playButton,
-                              duration: 0.4,
-                              options: .transitionFlipFromBottom,
-                              animations: {
-                                self.playButton.isSelected = true
-            })
+            self.playButton.isSelected = true
             
             // Return button to normal size and return other buttons to orignal position
             saveButton.moveButton(fromValue: 0, toValue: 20)
             stopButton.moveButton(fromValue: 0, toValue: -20)
             playButton.scaleButton(fromValue: 1, toValue: 2)
             
+            stopButton.isEnabled = false
+            saveButton.isEnabled = false
         case "pause":
             // Pause -> Play
-            UIView.transition(with: playButton,
-                              duration: 0.4,
-                              options: .transitionFlipFromBottom,
-                              animations: {
-                                self.playButton.isSelected = false
-            })
+            self.playButton.isSelected = false
             
             // Return buttons to normal state
             saveButton.moveButton(fromValue: 20, toValue: 0)
             stopButton.moveButton(fromValue: -20, toValue: 0)
-            playButton.scaleButton(fromValue: 2, toValue: 1)
+            playButton.scaleButton(fromValue: 2, toValue: 1, duration: 0.2)
+            
+            stopButton.isEnabled = true
+            saveButton.isEnabled = true
             
         case "stop":
+            self.playButton.isSelected = false
+            
             saveButton.moveButton(fromValue: 0, toValue: 20)
             playButton.moveButton(fromValue: 0, toValue: 20)
             stopButton.scaleButton(fromValue: 1, toValue: 2)
@@ -203,11 +200,15 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             playButton.moveButton(fromValue: 20, toValue: 0)
             stopButton.scaleButton(fromValue: 4, toValue: 1)
             
+            
+            
         case "save":
             stopButton.moveButton(fromValue: -20, toValue: 0)
             playButton.moveButton(fromValue: -20, toValue: 0)
             saveButton.scaleButton(fromValue: 4, toValue: 1)
             
+            saveButton.isEnabled = false
+            stopButton.isEnabled = false
             
         default:
             print("ERROR: Not an animation")
@@ -235,21 +236,21 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
+//    func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
