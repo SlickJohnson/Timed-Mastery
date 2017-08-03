@@ -16,9 +16,9 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var taskName: UITextField!
+    @IBOutlet weak var taskName: RequiredTextField!
     var effect:UIVisualEffect!
-
+    
     var isEditingTask: Bool!
     var editedTaskRef: Task?
     
@@ -349,7 +349,9 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
     }
     
     @IBAction func confirmEditTaskView(_ sender: UIButton) {
+        // Edit existing task
         if isEditingTask {
+            if taskName.text != "" {
             let realm = try! Realm()
             try! realm.write {
                 editedTaskRef?.name = taskName.text!
@@ -359,13 +361,21 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
             animateViewOut(targetView: editTaskView)
             loadData()
             isEditingTask = false
+            } else {
+                taskName.shake()
+            }
         }
+        // Add new task
         else {
-            let taskToAdd: Task = Task()
-            taskToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: taskName.text!)
-            taskToAdd.save()
-            animateViewOut(targetView: editTaskView)
-            loadData()
+            if taskName.text != "" {
+                let taskToAdd: Task = Task()
+                taskToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: taskName.text!)
+                taskToAdd.save()
+                animateViewOut(targetView: editTaskView)
+                loadData()
+            } else {
+                taskName.shake()
+            }
         }
     }
     

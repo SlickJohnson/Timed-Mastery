@@ -24,9 +24,9 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        secondsLabel.text = "\(String(format: "%02d", secCounter))"
+        hourLabel.text = "\(String(format: "%02d", hrCounter))"
         minuteLabel.text = "\(String(format: "%02d", minCounter))"
-        secondsLabel.text = "\(String(format: "%02d", hrCounter))"
+        secondsLabel.text = "\(String(format: "%04.1f", secCounter))"
         
         taskName.frame.size.height = 44
         
@@ -81,20 +81,21 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         
         self.view.endEditing(true)
         
-        let refreshAlert = UIAlertController(title: "DELETE Task?", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: "Delete Task?", message: "This will reset the timer.", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action: UIAlertAction!) in
             self.animateButton(animation: "delete")
             self.taskName.text = ""
             
-            self.secCounter = 0
-            self.minCounter = 0
             self.hrCounter = 0
+            self.minCounter = 0
+            self.secCounter = 0.0
             
-            self.secondsLabel.text = "\(String(format: "%02d", self.secCounter))"
-            self.minuteLabel.text = "\(String(format: "%02d", self.minCounter))"
             self.hourLabel.text = "\(String(format: "%02d", self.hrCounter))"
-            self.saveButton.isEnabled = false
+            self.minuteLabel.text = "\(String(format: "%02d", self.minCounter))"
+            self.secondsLabel.text = "\(String(format: "%04.1f", self.secCounter))"
+            
+                        self.saveButton.isEnabled = false
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
@@ -142,14 +143,15 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             
             playButton.isEnabled = true
             
-            self.secCounter = 0
-            self.minCounter = 0
+            
             self.hrCounter = 0
+            self.minCounter = 0
+            self.secCounter = 0.0
             
-            self.secondsLabel.text = "\(String(format: "%02d", self.secCounter))"
-            self.minuteLabel.text = "\(String(format: "%02d", self.minCounter))"
             self.hourLabel.text = "\(String(format: "%02d", self.hrCounter))"
-            
+            self.minuteLabel.text = "\(String(format: "%02d", self.minCounter))"
+            self.secondsLabel.text = "\(String(format: "%04.1f", secCounter))"
+ 
             self.view.endEditing(true)
         } else {
             taskName.shake()
@@ -175,7 +177,6 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             // Pause -> Play
             self.playButton.isSelected = false
             
-            // Return buttons to normal state
             saveButton.moveButton(fromValue: 20, toValue: 0)
             stopButton.moveButton(fromValue: -20, toValue: 0)
             playButton.scaleButton(fromValue: 2, toValue: 1, duration: 0.2)
@@ -218,7 +219,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         secCounter += 0.1
         
         if secCounter >= 60 {
-            secCounter = 0
+            secCounter = 0.0
             minCounter += 1
         }
         
@@ -227,9 +228,9 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             hrCounter += 1
         }
         
-        secondsLabel.text = "\(String(format: "%04.1f", secCounter))"
-        minuteLabel.text = "\(String(format: "%02d", minCounter))"
         hourLabel.text = "\(String(format: "%02d", hrCounter))"
+        minuteLabel.text = "\(String(format: "%02d", minCounter))"
+        secondsLabel.text = "\(String(format: "%04.1f", secCounter))"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
