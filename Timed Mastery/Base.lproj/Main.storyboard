@@ -159,7 +159,7 @@
                     <color key="backgroundColor" white="1" alpha="0.9038099315" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="750" y="-320.07042253521126"/>
+            <point key="canvasLocation" x="709" y="0.0"/>
         </scene>
         <!--Performance-->
         <scene sceneID="XVP-Gz-9JP">
@@ -175,6 +175,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Performance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5G-Xr-iO3">
                                 <rect key="frame" x="0.0" y="20" width="320" height="62"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.93000000000000005" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="4ma-Ot-X9D"/>
                                 </constraints>
@@ -182,7 +183,7 @@
                                 <color key="textColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Tasks (ie. Runnin Jogging Hiking)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-hG-dz1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter Tasks" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-hG-dz1">
                                 <rect key="frame" x="16" y="90" width="288" height="26"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -191,20 +192,34 @@
                                 <color key="textColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="PcM-Ja-08s" eventType="editingDidEnd" id="3Pb-WK-UV0"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CpN-RH-ns0" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="124" width="320" height="395"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="398"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bWk-Gp-F6o">
+                                <rect key="frame" x="40" y="115" width="240" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.92642337328767121" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="HEp-zC-y3Q"/>
+                                </constraints>
+                                <color key="sectionIndexBackgroundColor" red="0.78680455764158452" green="0.7945947017766497" blue="0.7945947017766497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="W5G-Xr-iO3" firstAttribute="trailing" secondItem="CpN-RH-ns0" secondAttribute="trailing" id="412-Kk-9cT"/>
-                            <constraint firstItem="CpN-RH-ns0" firstAttribute="top" secondItem="zvJ-hG-dz1" secondAttribute="bottom" constant="8" symbolic="YES" id="5hG-Tf-esH"/>
+                            <constraint firstItem="CpN-RH-ns0" firstAttribute="top" secondItem="zvJ-hG-dz1" secondAttribute="bottom" constant="5" id="5hG-Tf-esH"/>
+                            <constraint firstItem="bWk-Gp-F6o" firstAttribute="leading" secondItem="zvJ-hG-dz1" secondAttribute="leading" id="9Ns-HG-H8B"/>
                             <constraint firstItem="zvJ-hG-dz1" firstAttribute="top" secondItem="W5G-Xr-iO3" secondAttribute="bottom" constant="8" symbolic="YES" id="Ugb-lM-UEm"/>
                             <constraint firstItem="CpN-RH-ns0" firstAttribute="bottom" secondItem="RhQ-se-rMy" secondAttribute="top" id="a9R-pc-gKp"/>
                             <constraint firstItem="W5G-Xr-iO3" firstAttribute="leading" secondItem="CpN-RH-ns0" secondAttribute="leading" id="cvE-eo-Bg8"/>
+                            <constraint firstItem="bWk-Gp-F6o" firstAttribute="trailing" secondItem="zvJ-hG-dz1" secondAttribute="trailing" id="jBr-Hh-xUt"/>
                             <constraint firstItem="W5G-Xr-iO3" firstAttribute="top" secondItem="iVR-Kk-LAn" secondAttribute="bottom" id="kah-Cs-Ylh"/>
+                            <constraint firstItem="bWk-Gp-F6o" firstAttribute="top" secondItem="zvJ-hG-dz1" secondAttribute="bottom" constant="5" id="lyS-rc-ksi"/>
                             <constraint firstItem="W5G-Xr-iO3" firstAttribute="centerX" secondItem="zvJ-hG-dz1" secondAttribute="centerX" id="vSP-0X-PhB"/>
                             <constraint firstItem="zvJ-hG-dz1" firstAttribute="leading" secondItem="MdZ-Ke-IVy" secondAttribute="leadingMargin" id="vUd-mg-tN1"/>
                             <constraint firstAttribute="trailing" secondItem="W5G-Xr-iO3" secondAttribute="trailing" id="xvb-n2-6SK"/>
@@ -213,13 +228,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Performance" image="icons8-Combo Chart Filled-50" id="l95-ta-9Ty"/>
                     <connections>
+                        <outlet property="heightConstraint" destination="HEp-zC-y3Q" id="NJm-OH-uqK"/>
                         <outlet property="lineChartView" destination="CpN-RH-ns0" id="Y7P-g7-MCc"/>
-                        <outlet property="tasksToQuery" destination="zvJ-hG-dz1" id="i3z-Qr-w8y"/>
+                        <outlet property="tableView" destination="bWk-Gp-F6o" id="Xdj-aG-gFp"/>
+                        <outlet property="textField" destination="zvJ-hG-dz1" id="QDh-Aq-f7C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1z-bP-ZtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="-743"/>
+            <point key="canvasLocation" x="2021.25" y="0.0"/>
         </scene>
         <!--Timer-->
         <scene sceneID="wg7-f3-ORb">
@@ -368,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="358.69565217391306"/>
+            <point key="canvasLocation" x="1352" y="0.0"/>
         </scene>
         <!--History-->
         <scene sceneID="8GI-ji-fy0">
@@ -398,7 +415,7 @@
                                     <action selector="editMode:" destination="Sfv-An-4UC" eventType="touchUpInside" id="jFy-F1-sHf"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fqT-Cz-HX9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fqT-Cz-HX9">
                                 <rect key="frame" x="0.0" y="140" width="320" height="379"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -600,7 +617,7 @@
                     <color key="backgroundColor" red="0.99203723669052124" green="0.9921455979347229" blue="0.9961208701133728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1642.5" y="347.53521126760563"/>
+            <point key="canvasLocation" x="2670" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
