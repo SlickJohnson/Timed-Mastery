@@ -12,7 +12,7 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     
-    var uniqueTaskNames: Set<String> = Set<String>()
+    var uniqueSkillNames: Set<String> = Set<String>()
     
     let secondsInDay: Double = 24*60*60
     var todayInSeconds: TimeInterval = TimeInterval()
@@ -60,56 +60,56 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
         var dataEntries: [ChartDataEntry] = []
         var chartDataSets: [LineChartDataSet] = []
         
-        // check if user has searched for tasks
+        // check if user has searched for skills
         if textField.text == "" {
-            uniqueTaskNames = getAllTaskNames()
+            uniqueSkillNames = getAllSkillNames()
         } else {
-            uniqueTaskNames = Set(textField.text!.components(separatedBy: "+"))
+            uniqueSkillNames = Set(textField.text!.components(separatedBy: "+"))
         }
         
         var i = 0
         
-        // loop through all task names found in database -- i.e., 'running' 'jogging' 'programming'
-        for uniqueTaskName in uniqueTaskNames {
+        // loop through all skill names found in database -- i.e., 'running' 'jogging' 'programming'
+        for uniqueSkillName in uniqueSkillNames {
             
-            // get all tasks with matching name
-            let matchingTasks = getTasksFromDatabase(taskName: uniqueTaskName)
-            let uniqueTasks: List<Task> = List<Task>()
+            // get all skills with matching name
+            let matchingSkills = getSkillsFromDatabase(skillName: uniqueSkillName)
+            let uniqueSkills: List<Skill> = List<Skill>()
             var add = true
             
-            // create a non-repeating (date) list of tasks
-            for matchingTask in matchingTasks {
-                for uniqueTask in uniqueTasks {
-                    if (Calendar.current.isDate(uniqueTask.date, inSameDayAs:matchingTask.date)) {
+            // create a non-repeating (date) list of skills
+            for matchingSkill in matchingSkills {
+                for uniqueSkill in uniqueSkills {
+                    if (Calendar.current.isDate(uniqueSkill.date, inSameDayAs:matchingSkill.date)) {
                         add = false
                     }
                 }
-                if (add) {uniqueTasks.append(matchingTask)}
+                if (add) {uniqueSkills.append(matchingSkill)}
             }
             
             // add data points to show 1 week history
             for day in stride(from: todayInSeconds - secondsInDay*6, to: todayInSeconds + secondsInDay, by: secondsInDay) {
-                var task: Task? = nil
+                var skill: Skill? = nil
                 
-                for uniqueTask in uniqueTasks {
-                    if uniqueTask.timeIntervalOfDay == day {
-                        task = uniqueTask
+                for uniqueSkill in uniqueSkills {
+                    if uniqueSkill.timeIntervalOfDay == day {
+                        skill = uniqueSkill
                     }
                 }
                 
                 var dataEntry = ChartDataEntry()
                 
-                if (task == nil) {
+                if (skill == nil) {
                     // no data for this date so Y value is set to 0
                     dataEntry = ChartDataEntry(x: Double(day), y: 0.0)
                 } else {
-                    dataEntry = ChartDataEntry(x: Double(day), y: task!.getAggregateTask().time)
+                    dataEntry = ChartDataEntry(x: Double(day), y: skill!.getAggregateData().time)
                 }
                 
                 dataEntries.append(dataEntry)
             }
             
-            chartDataSets.append(LineChartDataSet(values: dataEntries, label: uniqueTaskName))
+            chartDataSets.append(LineChartDataSet(values: dataEntries, label: uniqueSkillName))
             
             // give each chart a random pastel color
             let chartDataSetColor = UIColor(hue: 3.6 * CGFloat(Float(arc4random()) / Float(UINT32_MAX)), saturation: CGFloat(0.45 + 0.10 * Float(arc4random()) / Float(UINT32_MAX)), brightness: CGFloat(0.73 + 0.10 * Float(arc4random()) / Float(UINT32_MAX)), alpha: 1.0)
@@ -153,23 +153,23 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
         lineChartView.leftAxis.valueFormatter = axisFormatDelegate
     }
     
-    func getAllTaskNames() -> Set<String> {
+    func getAllSkillNames() -> Set<String> {
         do {
             let realm = try Realm()
             
-            // non-repeating list of task names
-            return Set((realm.objects(Task.self).value(forKey: "name") as! [String]).sorted())
+            // non-repeating list of skill names
+            return Set((realm.objects(Skill.self).value(forKey: "name") as! [String]).sorted())
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
     }
     
-    func getTasksFromDatabase(taskName: String) -> Results<Task> {
+    func getSkillsFromDatabase(skillName: String) -> Results<Skill> {
         do {
             let realm = try Realm()
             
             // get a month's worth of data
-            return realm.objects(Task.self).filter("name == %@ && timeIntervalOfDay >= %@", taskName, Calendar.current.startOfDay(for: Date()).timeIntervalSince1970 - (24*60*60*30.44))
+            return realm.objects(Skill.self).filter("name == %@ && timeIntervalOfDay >= %@", skillName, Calendar.current.startOfDay(for: Date()).timeIntervalSince1970 - (24*60*60*30.44))
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
@@ -248,12 +248,12 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     func updateDropDownList() {
-        dropDownListVals = Array(getAllTaskNames())
-        let taskNamesInSearchBar = textField.text?.components(separatedBy: "+")
+        dropDownListVals = Array(getAllSkillNames())
+        let skillNamesInSearchBar = textField.text?.components(separatedBy: "+")
         
-        for taskName in dropDownListVals {
-            if taskNamesInSearchBar!.contains(taskName) {
-                dropDownListVals.remove(at: dropDownListVals.index(of: taskName)!)
+        for skillName in dropDownListVals {
+            if skillNamesInSearchBar!.contains(skillName) {
+                dropDownListVals.remove(at: dropDownListVals.index(of: skillName)!)
             }
         }
         tableView.reloadData()

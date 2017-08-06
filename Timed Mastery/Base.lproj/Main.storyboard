@@ -23,12 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road To Mastery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgk-4L-fF1">
-                                <rect key="frame" x="0.0" y="20" width="320" height="62"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <color key="textColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time spent today: 0 mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6d-53-cXN">
                                 <rect key="frame" x="16" y="101" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -50,11 +44,11 @@
                                     <constraint firstAttribute="width" constant="129" id="kox-dk-Pri"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Add a Task">
+                                <state key="normal" title="Add a Skill">
                                     <color key="titleColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addTask:" destination="9pv-A4-QxB" eventType="touchUpInside" id="NrT-Hp-xWL"/>
+                                    <action selector="addSkill:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Wgd-qH-Oh2"/>
                                 </connections>
                             </button>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAp-Bf-o4O">
@@ -78,6 +72,12 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road To Mastery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgk-4L-fF1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="62"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <color key="textColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -97,13 +97,18 @@
                             <constraint firstItem="NAp-Bf-o4O" firstAttribute="leading" secondItem="Xtc-6Y-AKD" secondAttribute="leading" id="zLh-1X-xYl"/>
                             <constraint firstItem="L6d-53-cXN" firstAttribute="leading" secondItem="Xtc-6Y-AKD" secondAttribute="leadingMargin" id="zqz-tt-zhE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="NAp-Bf-o4O"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="icons8-Home Filled" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="addTaskButton" destination="xQn-od-nBX" id="nuJ-ix-79k"/>
-                        <outlet property="addTaskView" destination="BHi-A6-SE8" id="Omj-iv-xzg"/>
+                        <outlet property="addSkillButton" destination="xQn-od-nBX" id="xX3-Vo-NeO"/>
+                        <outlet property="addSkillView" destination="BHi-A6-SE8" id="s6q-Di-lzr"/>
                         <outlet property="datePicker" destination="QTb-ON-Ry7" id="gEw-gD-Ck1"/>
-                        <outlet property="taskName" destination="YZ6-nA-L9a" id="hBd-oq-1U9"/>
+                        <outlet property="skillName" destination="YZ6-nA-L9a" id="TB0-ED-Y2Z"/>
                         <outlet property="timePicker" destination="xS7-EN-zk6" id="gIs-WD-arS"/>
                         <outlet property="timeSpentTodayLabel" destination="L6d-53-cXN" id="bT1-mp-chI"/>
                         <outlet property="visualEffectView" destination="NAp-Bf-o4O" id="mqS-4k-JLv"/>
@@ -135,20 +140,14 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" red="0.03097239848" green="0.03097239848" blue="0.03097239848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <connections>
-                                <action selector="cancelAddTask:" destination="9pv-A4-QxB" eventType="touchUpInside" id="pt9-NN-ECm"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GqW-id-YrI">
                             <rect key="frame" x="160" y="258" width="147" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="Add"/>
-                            <connections>
-                                <action selector="dismissAddTaskView:" destination="9pv-A4-QxB" eventType="touchUpInside" id="a4B-2G-rpP"/>
-                            </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-nA-L9a">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skill Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-nA-L9a">
                             <rect key="frame" x="16" y="20" width="275" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
@@ -183,7 +182,7 @@
                                 <color key="textColor" red="0.16982650760000001" green="0.24185281989999999" blue="0.31671267749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter Tasks" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-hG-dz1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter Skills" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-hG-dz1">
                                 <rect key="frame" x="16" y="90" width="288" height="26"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -336,7 +335,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HDi-1J-BOT" customClass="RequiredTextField" customModule="Timed_Mastery" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skill Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HDi-1J-BOT" customClass="RequiredTextField" customModule="Timed_Mastery" customModuleProvider="target">
                                 <rect key="frame" x="18" y="196" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.16788125038146973" green="0.24161174893379211" blue="0.31611889600753784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -378,8 +377,8 @@
                         <outlet property="playButton" destination="n8Z-Vb-3R7" id="GiI-FH-vhx"/>
                         <outlet property="saveButton" destination="ZaZ-1r-ljq" id="HX8-xN-pdO"/>
                         <outlet property="secondsLabel" destination="u4Y-jy-XsY" id="bGr-Cd-GFd"/>
+                        <outlet property="skillName" destination="HDi-1J-BOT" id="cbp-NX-5kR"/>
                         <outlet property="stopButton" destination="O7L-vw-0Ov" id="y1r-X2-ymY"/>
-                        <outlet property="taskName" destination="HDi-1J-BOT" id="Tw8-pV-xmX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -462,7 +461,7 @@
                                             <constraint firstItem="WWk-6X-flX" firstAttribute="centerY" secondItem="r0w-rC-uR0" secondAttribute="centerY" id="dv7-n5-cdd"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="taskLabel" destination="Cej-9V-0BU" id="X6F-2x-aQA"/>
+                                            <outlet property="skillLabel" destination="Cej-9V-0BU" id="I2Z-Ys-pxY"/>
                                             <outlet property="totalTime" destination="WWk-6X-flX" id="YyI-OD-nTf"/>
                                         </connections>
                                     </tableViewCell>
@@ -489,7 +488,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95487400619999996" green="0.96432820429999999" blue="0.96432820429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="taskInformationLabel" destination="eLq-rb-FBl" id="VPm-Xm-3Sr"/>
+                                            <outlet property="skillDataLabel" destination="eLq-rb-FBl" id="F9P-Fz-B2n"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -506,7 +505,7 @@
                                     <color key="titleColor" red="0.13620385527610779" green="0.49856209754943848" blue="0.73508930206298828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addTask:" destination="Sfv-An-4UC" eventType="touchUpInside" id="bz6-Ly-fPH"/>
+                                    <action selector="addSkill:" destination="Sfv-An-4UC" eventType="touchUpInside" id="dLd-zb-z9g"/>
                                 </connections>
                             </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBp-W4-jFE">
@@ -554,9 +553,9 @@
                     <tabBarItem key="tabBarItem" title="History" image="icons8-Grid 3 Filled-50" id="7ks-1Z-6pV"/>
                     <connections>
                         <outlet property="datePicker" destination="y5k-Qn-KiN" id="6ho-K5-NlY"/>
-                        <outlet property="editTaskView" destination="dfq-t3-fcc" id="bgj-JK-GfK"/>
+                        <outlet property="editSkillView" destination="dfq-t3-fcc" id="Hjj-5D-iSX"/>
+                        <outlet property="skillName" destination="GW7-BW-svX" id="HJ6-Ge-CSa"/>
                         <outlet property="tableView" destination="fqT-Cz-HX9" id="pjF-o4-Gva"/>
-                        <outlet property="taskName" destination="GW7-BW-svX" id="zFh-SS-gXs"/>
                         <outlet property="timePicker" destination="Jfd-lt-9ot" id="Kkp-Jb-GfJ"/>
                         <outlet property="visualEffectView" destination="MBp-W4-jFE" id="ITs-Sl-mqM"/>
                     </connections>
@@ -588,8 +587,7 @@
                                 <color key="titleColor" red="0.16788125038146973" green="0.24161174893379211" blue="0.31611889600753784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="cancelAddTask:" destination="9pv-A4-QxB" eventType="touchUpInside" id="gJg-8l-OC1"/>
-                                <action selector="cancelEditTaskView:" destination="Sfv-An-4UC" eventType="touchUpInside" id="vCG-bH-kbY"/>
+                                <action selector="cancelEditSkillView:" destination="Sfv-An-4UC" eventType="touchUpInside" id="XPP-2n-rFT"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gda-5G-bUc">
@@ -600,11 +598,10 @@
                                 <color key="titleColor" red="0.17544034123420715" green="0.59049254655838013" blue="0.86967688798904419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="confirmEditTaskView:" destination="Sfv-An-4UC" eventType="touchUpInside" id="OW0-nm-bEF"/>
-                                <action selector="dismissAddTaskView:" destination="9pv-A4-QxB" eventType="touchUpInside" id="LI1-nF-Qh0"/>
+                                <action selector="confirmEditSkillView:" destination="Sfv-An-4UC" eventType="touchUpInside" id="dMi-6s-Xud"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GW7-BW-svX" customClass="RequiredTextField" customModule="Timed_Mastery" customModuleProvider="target">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skill Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GW7-BW-svX" customClass="RequiredTextField" customModule="Timed_Mastery" customModuleProvider="target">
                             <rect key="frame" x="16" y="20" width="275" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.91311092714332198" green="0.92215162939226569" blue="0.92215162939226569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

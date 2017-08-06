@@ -3,22 +3,22 @@ import RealmSwift
 
 class DashboardViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet var addTaskView: UIView!
+    @IBOutlet var addSkillView: UIView!
     
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
-    @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var addSkillButton: UIButton!
     
     var effect:UIVisualEffect!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
     
-    @IBOutlet weak var taskName: UITextField!
+    @IBOutlet weak var skillName: UITextField!
     
     @IBOutlet weak var timeSpentTodayLabel: UILabel!
     
-    var tasks: Results<Task>?
+    var skills: Results<Skill>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +26,10 @@ class DashboardViewController: UIViewController, UITextFieldDelegate {
         effect = visualEffectView.effect
         visualEffectView.effect = nil
 
-        addTaskView.layer.cornerRadius = 5
-        addTaskButton.layer.cornerRadius = 5
+        addSkillView.layer.cornerRadius = 5
+        addSkillButton.layer.cornerRadius = 5
     
-        self.taskName.delegate = self
+        self.skillName.delegate = self
         updateTimeSpentTodayLabel()
     }
     
@@ -78,37 +78,37 @@ class DashboardViewController: UIViewController, UITextFieldDelegate {
     }
 
     
-    @IBAction func addTask(_ sender: UIButton) {
-        animateViewIn(targetView: addTaskView)
+    @IBAction func addSkill(_ sender: UIButton) {
+        animateViewIn(targetView: addSkillView)
     }
-    @IBAction func dismissAddTaskView(_ sender: UIButton) {
-        let taskToAdd: Task = Task()
-        taskToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: taskName.text!)
-        taskToAdd.save()
-        animateViewOut(targetView: addTaskView)
+    @IBAction func dismissAddSkillView(_ sender: UIButton) {
+        let skillToAdd: Skill = Skill()
+        skillToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: skillName.text!)
+        skillToAdd.save()
+        animateViewOut(targetView: addSkillView)
     }
     
-    @IBAction func cancelAddTask(_ sender: UIButton) {
-        animateViewOut(targetView: addTaskView)
+    @IBAction func cancelAddSkill(_ sender: UIButton) {
+        animateViewOut(targetView: addSkillView)
     }
     
     func getTimeSpentToday() -> Double {
         do {
             let realm = try Realm()
-            let tasksToday = realm.objects(Task.self).filter("timeIntervalOfDay == %@", Calendar.current.startOfDay(for: Date()).timeIntervalSince1970)
+            let skillsToday = realm.objects(Skill.self).filter("timeIntervalOfDay == %@", Calendar.current.startOfDay(for: Date()).timeIntervalSince1970)
             // gets a month's worth of data
-            return tasksToday.sum(ofProperty: "time")
+            return skillsToday.sum(ofProperty: "time")
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
     }
     
-    func getTasksFromDatabase() -> Results<Task> {
+    func getSkillsFromDatabase() -> Results<Skill> {
         do {
             let realm = try Realm()
             
             // gets a month's worth of data
-            return realm.objects(Task.self)
+            return realm.objects(Skill.self)
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }

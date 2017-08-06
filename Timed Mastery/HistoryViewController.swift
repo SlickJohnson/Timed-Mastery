@@ -7,20 +7,20 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
     // Tableview
     @IBOutlet weak var tableView: UITableView!
     var sectionNames: [String]!
-    var rowDict: [String: [Task]] = [String : [Task]]()
+    var rowDict: [String: [Skill]] = [String : [Skill]]()
     var currentRows: [String?]!
     
     // Editview
-    @IBOutlet var editTaskView: UIView!
+    @IBOutlet var editSkillView: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var taskName: RequiredTextField!
+    @IBOutlet weak var skillName: RequiredTextField!
     var effect:UIVisualEffect!
     
-    var isEditingTask: Bool!
-    var editedTaskRef: Task?
+    var isEditingSkill: Bool!
+    var editedSkillRef: Skill?
     
     override func viewDidLoad() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -28,9 +28,9 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         
-        editTaskView.layer.cornerRadius = 5
+        editSkillView.layer.cornerRadius = 5
         
-        self.taskName.delegate = self
+        self.skillName.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -39,7 +39,7 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         loadData()
         tableView.allowsSelectionDuringEditing = true
         tableView.isEditing = false
-        isEditingTask = false
+        isEditingSkill = false
         visualEffectView.isUserInteractionEnabled = false
     }
     
@@ -55,8 +55,8 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         // Row is DefaultCell
         if let rowData = currentRows?[indexPath.row] {
             let defaultCell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath) as! DefaultCell
-            defaultCell.taskLabel.text = "\(rowData)"
-            defaultCell.totalTime.text = "\(formatTime(time:getTotalTaskTime(nameOfTask: rowData)))"
+            defaultCell.skillLabel.text = "\(rowData)"
+            defaultCell.totalTime.text = "\(formatTime(time:getTotalSkillTime(nameOfSkill: rowData)))"
             defaultCell.selectionStyle = .none
             return defaultCell
         }
@@ -69,11 +69,11 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 // Set the cell's data
                 let cellIndex = indexPath.row - getParentCellIndex(expansionIndex: indexPath.row) - 1
                 
-                let task = rowDict[rowData]?[cellIndex]
-                let time = formatTime(time: task!.time)
-                let date = formatDate(date: task!.timeIntervalOfDay)
+                let skill = rowDict[rowData]?[cellIndex]
+                let time = formatTime(time: skill!.time)
+                let date = formatDate(date: skill!.timeIntervalOfDay)
                 
-                expansionCell.taskInformationLabel.text = "\(date) : \(time)"
+                expansionCell.skillDataLabel.text = "\(date) : \(time)"
                 expansionCell.selectionStyle = .none
                 return expansionCell
             }
@@ -113,15 +113,15 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 let sectionName = currentRows[parentCellIndex]!
                 
                 let cellIndex = indexPath.row - getParentCellIndex(expansionIndex: indexPath.row) - 1
-                let cellTask = rowDict[sectionName]?[cellIndex]
+                let cellSkill = rowDict[sectionName]?[cellIndex]
                 
-                taskName.text? = cellTask!.name
-                datePicker.date = cellTask!.date
-                timePicker.countDownDuration = cellTask!.time
+                skillName.text? = cellSkill!.name
+                datePicker.date = cellSkill!.date
+                timePicker.countDownDuration = cellSkill!.time
                 
-                animateViewIn(targetView: editTaskView)
-                isEditingTask = true
-                editedTaskRef = cellTask
+                animateViewIn(targetView: editSkillView)
+                isEditingSkill = true
+                editedSkillRef = cellSkill
             }
         }
     }
@@ -136,15 +136,15 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 refreshAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action: UIAlertAction!) in
                     
                     let sectionName = self.currentRows[indexPath.row]
-                    let tasksToDelete = self.rowDict[sectionName!]
+                    let skillsToDelete = self.rowDict[sectionName!]
                     
                     if self.getNumberOfSubCells(parentIndex: indexPath.row) > 0 {
                         self.contractCell(tablewView: tableView, index: indexPath.row)
                     }
                     let realm = try! Realm()
                     try! realm.write {
-                        for task in tasksToDelete! {
-                            realm.delete(task)
+                        for skill in skillsToDelete! {
+                            realm.delete(skill)
                         }
                     }
                     self.rowDict[sectionName!] = nil
@@ -165,17 +165,17 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 let sectionName = currentRows[parentCellIndex]!
                 
                 let cellIndex = indexPath.row - getParentCellIndex(expansionIndex: indexPath.row) - 1
-                let cellTask = rowDict[sectionName]?[cellIndex]
+                let cellSkill = rowDict[sectionName]?[cellIndex]
                 
                 let realm = try! Realm()
                 try! realm.write {
-                    realm.delete(cellTask!)
+                    realm.delete(cellSkill!)
                 }
                 rowDict[(currentRows?[parentCellIndex])!]?.remove(at: cellIndex)
                 currentRows.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 
-                // Remove seciton cell once all related tasks have been removed
+                // Remove seciton cell once all related skills have been removed
                 if getNumberOfSubCells(parentIndex: parentCellIndex) == 0 {
                     currentRows.remove(at: parentCellIndex)
                     sectionNames.remove(at: sectionNames.index(of: sectionName)!)
@@ -194,21 +194,21 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         tableView.reloadData()
     }
     
-    private func getData() -> [Task] {
+    private func getData() -> [Skill] {
         do {
             let realm = try Realm()
             
             // gets a month's worth of data
-            return Array(realm.objects(Task.self))
+            return Array(realm.objects(Skill.self))
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
     }
     
-    private func getTasksByName(nameOfTasks: String) -> [Task] {
+    private func getSkillsByName(nameOfSkills: String) -> [Skill] {
         do {
             let realm = try Realm()
-            return Array(realm.objects(Task.self).filter("name == %@", nameOfTasks).sorted(byKeyPath: "date").reversed())
+            return Array(realm.objects(Skill.self).filter("name == %@", nameOfSkills).sorted(byKeyPath: "date").reversed())
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
@@ -231,19 +231,19 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         return numberOfSubCells
     }
     
-    private func getTotalTaskTime(nameOfTask: String) -> Double {
+    private func getTotalSkillTime(nameOfSkill: String) -> Double {
         do {
             let realm = try Realm()
             
-            return realm.objects(Task.self).filter("name == %@", nameOfTask).sum(ofProperty: "time")
+            return realm.objects(Skill.self).filter("name == %@", nameOfSkill).sum(ofProperty: "time")
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
     }
     
     private func populateDict() {
-        for taskName in sectionNames {
-            rowDict[taskName] = getTasksByName(nameOfTasks: taskName)
+        for skillName in sectionNames {
+            rowDict[skillName] = getSkillsByName(nameOfSkills: skillName)
         }
     }
     
@@ -251,8 +251,8 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         do {
             let realm = try Realm()
             
-            // non-repeating list of task names
-            return Array(Set(realm.objects(Task.self).value(forKey: "name") as! [String]).sorted())
+            // non-repeating list of skill names
+            return Array(Set(realm.objects(Skill.self).value(forKey: "name") as! [String]).sorted())
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
@@ -294,8 +294,8 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
     private func expandCell(tableView: UITableView, index: Int) {
         
         // Expand Cell (add ExpansionCells)
-        if let tasks = rowDict[(currentRows?[index]!)!] {
-            for i in 1...tasks.count {
+        if let skills = rowDict[(currentRows?[index]!)!] {
+            for i in 1...skills.count {
                 currentRows?.insert(nil, at: index + i)
                 tableView.insertRows(at: [NSIndexPath(row: index + i, section:  0) as IndexPath], with: .top)
             }
@@ -308,15 +308,15 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
     
     private func contractCell(tablewView: UITableView, index: Int) {
         // Contract Cell (remove ExpansionCells)
-        if let tasks = rowDict[(currentRows?[index]!)!]  {
-            for _ in 1...tasks.count {
+        if let skills = rowDict[(currentRows?[index]!)!]  {
+            for _ in 1...skills.count {
                 currentRows?.remove(at: index+1)
                 tableView.deleteRows(at: [NSIndexPath(row: index + 1, section: 0) as IndexPath], with: .top)
             }
         }
     }
     
-    //MARK: Edit Task view
+    //MARK: Edit Skill view
     func animateViewIn(targetView: UIView) {
         visualEffectView.isUserInteractionEnabled = true
         self.view.addSubview(targetView)
@@ -344,44 +344,44 @@ class HistoryViewController: UIViewController, UITextFieldDelegate, UITableViewD
         }
     }
     
-    @IBAction func addTask(_ sender: UIButton) {
-        animateViewIn(targetView: editTaskView)
+    @IBAction func addSkill(_ sender: UIButton) {
+        animateViewIn(targetView: editSkillView)
     }
     
-    @IBAction func confirmEditTaskView(_ sender: UIButton) {
-        // Edit existing task
-        if isEditingTask {
-            if taskName.text != "" {
+    @IBAction func confirmEditSkillView(_ sender: UIButton) {
+        // Edit existing skill
+        if isEditingSkill {
+            if skillName.text != "" {
             let realm = try! Realm()
             try! realm.write {
-                editedTaskRef?.name = taskName.text!
-                editedTaskRef?.date = datePicker.date
-                editedTaskRef?.time = timePicker.countDownDuration
+                editedSkillRef?.name = skillName.text!
+                editedSkillRef?.date = datePicker.date
+                editedSkillRef?.time = timePicker.countDownDuration
             }
-            animateViewOut(targetView: editTaskView)
+            animateViewOut(targetView: editSkillView)
             loadData()
-            isEditingTask = false
+            isEditingSkill = false
             } else {
-                taskName.shake()
+                skillName.shake()
             }
         }
-        // Add new task
+        // Add new skill
         else {
-            if taskName.text != "" {
-                let taskToAdd: Task = Task()
-                taskToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: taskName.text!)
-                taskToAdd.save()
-                animateViewOut(targetView: editTaskView)
+            if skillName.text != "" {
+                let skillToAdd: Skill = Skill()
+                skillToAdd.setValsTo(date: datePicker.date, time: timePicker.countDownDuration, name: skillName.text!)
+                skillToAdd.save()
+                animateViewOut(targetView: editSkillView)
                 loadData()
             } else {
-                taskName.shake()
+                skillName.shake()
             }
         }
     }
     
-    @IBAction func cancelEditTaskView(_ sender: UIButton) {
-        animateViewOut(targetView: editTaskView)
-        isEditingTask = false
+    @IBAction func cancelEditSkillView(_ sender: UIButton) {
+        animateViewOut(targetView: editSkillView)
+        isEditingSkill = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

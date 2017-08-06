@@ -10,9 +10,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: MovableButton!
     @IBOutlet weak var stopButton: MovableButton!
     
-    @IBOutlet weak var taskName: RequiredTextField!
-    
-    @IBOutlet var addTaskView: UIView!
+    @IBOutlet weak var skillName: RequiredTextField!
     
     var timer = Timer()
     var secCounter = 0.0
@@ -28,7 +26,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         minuteLabel.text = "\(String(format: "%02d", minCounter))"
         secondsLabel.text = "\(String(format: "%04.1f", secCounter))"
         
-        taskName.frame.size.height = 44
+        skillName.frame.size.height = 44
         
         // Change button appearance
         
@@ -66,7 +64,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         //        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(TimerViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        self.taskName.delegate = self
+        self.skillName.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,11 +79,11 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         
         self.view.endEditing(true)
         
-        let refreshAlert = UIAlertController(title: "Delete Task?", message: "This will reset the timer.", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: "Delete Skill?", message: "This will reset the timer.", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action: UIAlertAction!) in
             self.animateButton(animation: "delete")
-            self.taskName.text = ""
+            self.skillName.text = ""
             
             self.hrCounter = 0
             self.minCounter = 0
@@ -126,17 +124,17 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveButton(_ sender: UIButton) {
         
-        if self.taskName.text! != "" {
+        if self.skillName.text! != "" {
             animateButton(animation: "save")
-            let task = Task()
+            let skill = Skill()
             
-            task.time = ((Double(self.minCounter)*3600) + Double(self.minCounter)*60) + self.secCounter;
+            skill.time = ((Double(self.minCounter)*3600) + Double(self.minCounter)*60) + self.secCounter;
             
-            task.name = self.taskName.text!
+            skill.name = self.skillName.text!
             
-            self.taskName.text = ""
+            self.skillName.text = ""
             
-            task.save()
+            skill.save()
             
             timer.invalidate()
             isRunning = false
@@ -154,7 +152,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             
             self.view.endEditing(true)
         } else {
-            taskName.shake()
+            skillName.shake()
         }
         
     }
@@ -173,6 +171,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             
             stopButton.isEnabled = false
             saveButton.isEnabled = false
+            
         case "pause":
             // Pause -> Play
             self.playButton.isSelected = false
@@ -200,9 +199,7 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             saveButton.moveButton(fromValue: 20, toValue: 0)
             playButton.moveButton(fromValue: 20, toValue: 0)
             stopButton.scaleButton(fromValue: 4, toValue: 1)
-            
-            
-            
+
         case "save":
             stopButton.moveButton(fromValue: -20, toValue: 0)
             playButton.moveButton(fromValue: -20, toValue: 0)

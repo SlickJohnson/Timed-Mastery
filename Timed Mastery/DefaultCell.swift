@@ -3,6 +3,6 @@ import UIKit
 
 class DefaultCell : UITableViewCell {
     
-    @IBOutlet weak var taskLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var totalTime: UILabel!
 }

@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-public class Task: Object {
+public class Skill: Object {
     dynamic var date: Date = Date()
     dynamic var timeIntervalOfDay: TimeInterval = Calendar.current.startOfDay(for: Date()).timeIntervalSince1970
     dynamic var time: Double = Double(0.0)
@@ -25,23 +25,23 @@ public class Task: Object {
         }
     }
     
-    func getAggregateTask() -> Task {
+    func getAggregateData() -> Skill {
         do {
             let realm = try Realm()
-            let requestedTasks = realm.objects(Task.self).filter("name == %@ && timeIntervalOfDay >= %@", name, (timeIntervalOfDay - (24*60*60*30.44)))
+            let requestedSkills = realm.objects(Skill.self).filter("name == %@ && timeIntervalOfDay >= %@", name, (timeIntervalOfDay - (24*60*60*30.44)))
     
-            let tasksOnDay = List<Task>()
+            let skillsOnDay = List<Skill>()
             
-            for task in requestedTasks {
-                if (Calendar.current.isDate(task.date, inSameDayAs: date))
+            for skill in requestedSkills {
+                if (Calendar.current.isDate(skill.date, inSameDayAs: date))
                 {
-                    tasksOnDay.append(task)
+                    skillsOnDay.append(skill)
                 }
             }
-            let aggregateTask = Task()
-            aggregateTask.setValsTo(date: date, time: tasksOnDay.sum(ofProperty: "time"), name: name)
+            let aggregateData = Skill()
+            aggregateData.setValsTo(date: date, time: skillsOnDay.sum(ofProperty: "time"), name: name)
             
-            return aggregateTask
+            return aggregateData
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
