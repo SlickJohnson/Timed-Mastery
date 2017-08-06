@@ -227,7 +227,7 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
-
+        
         cell.textLabel?.text = dropDownListVals[indexPath.row]
         cell.textLabel?.font = textField.font
         
@@ -249,9 +249,10 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func updateDropDownList() {
         dropDownListVals = Array(getAllTaskNames())
+        let taskNamesInSearchBar = textField.text?.components(separatedBy: "+")
         
         for taskName in dropDownListVals {
-            if textField.text!.contains(taskName) {
+            if taskNamesInSearchBar!.contains(taskName) {
                 dropDownListVals.remove(at: dropDownListVals.index(of: taskName)!)
             }
         }
