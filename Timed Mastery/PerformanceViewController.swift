@@ -251,11 +251,21 @@ class PerformanceViewController: UIViewController, UITextFieldDelegate, UITableV
         dropDownListVals = Array(getAllSkillNames())
         let skillNamesInSearchBar = textField.text?.components(separatedBy: "+")
         
+        
         for skillName in dropDownListVals {
-            if skillNamesInSearchBar!.contains(skillName) {
-                dropDownListVals.remove(at: dropDownListVals.index(of: skillName)!)
+            if (skillNamesInSearchBar?.count)! > 0 {
+                if skillNamesInSearchBar!.contains(skillName) {
+                    dropDownListVals.remove(at: dropDownListVals.index(of: skillName)!)
+                }
+            } else {
+                if (textField.text?.contains(skillName))! {
+                    dropDownListVals.remove(at: dropDownListVals.index(of: skillName)!)
+                    continue
+                }
+                
             }
         }
+        
         tableView.reloadData()
     }
 }
